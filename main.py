@@ -4,9 +4,8 @@ def main():
         words = count_words(text)
         lower_words = get_lower_words(text)
         char_count = get_char_count(lower_words)
-        print(words)
-        print(char_count)
-        ## print(lower_words)
+        report = get_report(words, char_count)
+        print(report)
 
 def count_words(text):
     words = text.split()
@@ -23,6 +22,13 @@ def get_char_count(text):
             char_count[char] = char_count.get(char, 0) + 1
     return char_count
 
+def get_report(words, char_count):
+    report = "--- Begin report of books/frankenstein.txt ---\n"
+    report += f"{words} words found in the document"
+    for char, count in char_count.items():
+        report += f"The '{char}' character was found {count} times\n"
+    report += "--- End report ---"
+    return report
 
 if __name__ == "__main__":
     main()
